@@ -16,10 +16,9 @@ return [
     |
     */
 
-    'version' => 'v.0.0.1',
+    'version' => 'v.0.0.2',
     'author' => 'FabibiME',
     'repo' => 'https://github.com/FabibiME/self-destruct',
-    'link' => 'https://github.com/FabibiME',
 
 
     'name' => env('APP_NAME', 'Laravel'),

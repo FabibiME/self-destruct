@@ -6,7 +6,7 @@
     <form method="POST" action="{{ route('store') }}">
         @csrf
         <textarea
-            class="dark-textarea"
+            class="dark-textarea h-200"
             name="message"
             placeholder="Enter your note here!"
         ></textarea>
