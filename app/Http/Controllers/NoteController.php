@@ -50,19 +50,41 @@ class NoteController extends Controller
         {
             return redirect('error');
         }
-
-        return redirect('c/'.$encrypted_message['id']);
         
-
+        return view('notes.link')->withTitle($encrypted_message['id']);
 
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Note $note)
+    public function show($uuid)
     {
-        //
+        return view('notes.show')->withUuid($uuid);
+    }
+
+    public function open($uuid)
+    {
+
+        $note = Note::find($uuid);
+
+        if($note != null){
+            $encrypted = $note->getAttributes();
+
+            $text = Crypt::decrypt($encrypted['encrypted_message']);
+        
+            $note->delete();
+    
+            return view('notes.open')->withText($text);
+        } else {
+            return redirect('error');
+        }
+
+    }
+
+    public function error(){
+
+        return view('notes.error');
     }
 
     /**

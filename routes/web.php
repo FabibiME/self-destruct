@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\NoteController;
+use App\Models\Note;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::resource('', NoteController::class)
     ->only(['index', 'store']);
 
-/*Route::get('/', function () {
-    return view('notes_view');
-});*/
+Route::get('/notes/{uuid}', [NoteController::class, 'show'])->name('notes');
+
+Route::get('/notes/o/{uuid}', [NoteController::class, 'open'])->name('openNote');
+
+Route::get('/error', [NoteController::class, 'error']);
